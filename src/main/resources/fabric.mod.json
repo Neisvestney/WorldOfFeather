@@ -9,10 +9,10 @@
     "Настя Климова"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://github.com/Neisvestney/YaraBirds",
+    "sources": "https://github.com/Neisvestney/YaraBirds",
+    "issues": "https://github.com/Neisvestney/YaraBirds/issues"
   },
-  "license": "CC0-1.0",
   "icon": "assets/yarabirds/icon.png",
   "environment": "*",
   "entrypoints": {
