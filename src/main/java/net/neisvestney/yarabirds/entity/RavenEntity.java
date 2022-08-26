@@ -27,9 +27,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import net.neisvestney.yarabirds.entity.ai.FlyRandomlyBirdGoal;
-import net.neisvestney.yarabirds.entity.ai.LookForwardBirdGoal;
-import net.neisvestney.yarabirds.entity.ai.WanderAroundBirdGoal;
+import net.neisvestney.yarabirds.entity.ai.*;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -85,8 +83,10 @@ public class RavenEntity extends AnimalEntity implements IAnimatable {
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
         //this.goalSelector.add(1, new EscapeDangerGoal(this, 1.25));
-        this.goalSelector.add(1, new LookForwardBirdGoal(this));
-        this.goalSelector.add(2, new FlyRandomlyBirdGoal(this));
+        this.goalSelector.add(1, new StartFlyingBirdGoal(this, 120));
+        this.goalSelector.add(2, new LandBirdGoal(this, 500));
+        this.goalSelector.add(3, new LookForwardBirdGoal(this));
+        this.goalSelector.add(4, new FlyRandomlyBirdGoal(this));
         this.goalSelector.add(6, new WanderAroundBirdGoal(this, 1.0));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
@@ -136,7 +136,7 @@ public class RavenEntity extends AnimalEntity implements IAnimatable {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("glide.raven", true));
             return PlayState.CONTINUE;
         }
-        if (event.isMoving()) {
+        if (event.isMoving() || vec3d.y > 0.03f) {
             if (this.getFlying()) {
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("fly.raven", true));
             } else {
@@ -150,7 +150,7 @@ public class RavenEntity extends AnimalEntity implements IAnimatable {
 
     @Override
     public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController<>(this, "controller", 20, this::predicate));
+        animationData.addAnimationController(new AnimationController<>(this, "controller", 5, this::predicate));
     }
 
     @Override
