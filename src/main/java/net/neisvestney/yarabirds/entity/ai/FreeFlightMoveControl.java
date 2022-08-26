@@ -18,8 +18,10 @@ public class FreeFlightMoveControl extends MoveControl {
     @Override
     public void tick() {
         if (this.state != MoveControl.State.MOVE_TO) {
+            this.entity.setNoGravity(false);
             return;
         }
+        this.entity.setNoGravity(true);
         if (this.collisionCheckCooldown-- <= 0) {
             this.collisionCheckCooldown += this.entity.getRandom().nextInt(5) + 2;
             Vec3d vec3d = new Vec3d(this.targetX - this.entity.getX(), this.targetY - this.entity.getY(), this.targetZ - this.entity.getZ());

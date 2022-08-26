@@ -4,7 +4,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.FuzzyTargeting;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.control.MoveControl;
+import net.minecraft.entity.ai.goal.FlyGoal;
+import net.minecraft.entity.ai.goal.LookAroundGoal;
+import net.minecraft.entity.ai.goal.LookAtEntityGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -23,6 +27,9 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.neisvestney.yarabirds.entity.ai.FlyRandomlyBirdGoal;
+import net.neisvestney.yarabirds.entity.ai.LookForwardBirdGoal;
+import net.neisvestney.yarabirds.entity.ai.WanderAroundBirdGoal;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -40,8 +47,7 @@ public class RavenEntity extends AnimalEntity implements IAnimatable {
 
     public RavenEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
-
-        //this.moveControl = new FreeFlightMoveControl(this);
+        // this.moveControl = new FreeFlightMoveControl(this);
     }
 
     public static DefaultAttributeContainer.Builder createMobAttributes() {
@@ -53,6 +59,11 @@ public class RavenEntity extends AnimalEntity implements IAnimatable {
                 .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.3f);
     }
 
+    @Override
+    protected float getJumpVelocity() {
+        return 0.55F * this.getJumpVelocityMultiplier();
+    }
+
     public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
         return false;
     }
@@ -61,14 +72,28 @@ public class RavenEntity extends AnimalEntity implements IAnimatable {
     }
 
     @Override
+    public void tickMovement() {
+        super.tickMovement();
+        Vec3d vec3d = this.getVelocity();
+         //YaraBirds.LOGGER.info("" + vec3d.y);
+        if (!this.getFlying() && !this.onGround && vec3d.y < 0.0) {
+            this.setVelocity(new Vec3d(vec3d.x, -0.1, vec3d.z));
+        }
+    }
+
+    @Override
     protected void initGoals() {
         this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new EscapeDangerGoal(this, 1.25));
-        this.goalSelector.add(6, new WanderAroundFarGoal(this, 1.0));
-        // this.goalSelector.add(5, new FlyRandomlyGoal(this));
-        // this.goalSelector.add(2, new FlyOntoTreeGoal(this, 1.0));
+        //this.goalSelector.add(1, new EscapeDangerGoal(this, 1.25));
+        this.goalSelector.add(1, new LookForwardBirdGoal(this));
+        this.goalSelector.add(2, new FlyRandomlyBirdGoal(this));
+        this.goalSelector.add(6, new WanderAroundBirdGoal(this, 1.0));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
+    }
+
+    public void setMovementControl(MoveControl moveControl) {
+        this.moveControl = moveControl;
     }
 
     @Nullable
@@ -95,15 +120,22 @@ public class RavenEntity extends AnimalEntity implements IAnimatable {
         this.setFlying(nbt.getBoolean("Flying"));
     }
 
-    private void setFlying(boolean flying) {
+    public void setFlying(boolean flying) {
         this.dataTracker.set(FLYING, flying);
     }
 
-    private boolean getFlying() {
+    public boolean getFlying() {
         return (boolean)this.dataTracker.get(FLYING);
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+        Vec3d vec3d = this.getVelocity();
+        //YaraBirds.LOGGER.info("Animate" + !this.onGround + vec3d.y);
+        if (!this.onGround && vec3d.y < -0.01) {
+            //YaraBirds.LOGGER.info("Glide");
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("glide.raven", true));
+            return PlayState.CONTINUE;
+        }
         if (event.isMoving()) {
             if (this.getFlying()) {
                 event.getController().setAnimation(new AnimationBuilder().addAnimation("fly.raven", true));
