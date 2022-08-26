@@ -7,7 +7,6 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
-import net.neisvestney.yarabirds.YaraBirds;
 import net.neisvestney.yarabirds.entity.RavenEntity;
 
 public class LandBirdGoal extends Goal {
@@ -37,7 +36,7 @@ public class LandBirdGoal extends Goal {
             return false;
         }
         BlockState block = this.bird.world.getBlockState(((BlockHitResult) result).getBlockPos());
-        YaraBirds.LOGGER.info("Block: " + block + " " + result.squaredDistanceTo(this.bird));
+        // YaraBirds.LOGGER.info("Block: " + block + " " + result.squaredDistanceTo(this.bird));
         if (!block.getMaterial().isSolid() || block.getMaterial().isLiquid()) {
             return false;
         }
