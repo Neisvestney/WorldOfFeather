@@ -1,5 +1,5 @@
 # Automatically publish mod to curseforge and update release to add binary
-name: build
+name: Publish
 on:
   release:
     types: [published]

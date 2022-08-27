@@ -21,7 +21,7 @@ on:
 
 jobs:
   build:
-    name: ${{ runner.os }} - JDK ${{ inputs.java }}
+    name: ${{ inputs.os }} - JDK ${{ inputs.java }}
     runs-on: ${{ inputs.os }}
     outputs:
       version: ${{ steps.build.outputs.version }}
