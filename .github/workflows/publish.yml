@@ -40,4 +40,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: "build/libs/yara-birds-${{ needs.build.outputs.version }}.jar"
+          asset_path: "build/libs/yara-birds-${{ needs.build.outputs.mod_version }}.jar"
+          asset_name: "${{ needs.build.outputs.archives_base_name }}-${{ needs.build.outputs.mod_version }}.jar"
