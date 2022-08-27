@@ -81,9 +81,9 @@ publishing {
 }
 
 task setUpGitHubActions() {
-	println "::set-output name=mod_version::${project.mod_version}";
-	println "::set-output name=archives_base_name::${project.archives_base_name}";
-	println "::set-output name=curseforge_relations::${project.curseforge_relations}";
-	println "::set-output name=curseforge_game_versions::${project.curseforge_game_versions}";
+	println "::set-output name=mod_version::'${project.mod_version}'";
+	println "::set-output name=archives_base_name::'${project.archives_base_name}'";
+	println "::set-output name=curseforge_relations::'${project.curseforge_relations}'";
+	println "::set-output name=curseforge_game_versions::'${project.curseforge_game_versions}'";
 	println "::set-output name=curseforge_project_id::${project.curseforge_project_id}";
 }
