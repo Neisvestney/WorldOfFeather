@@ -21,19 +21,14 @@ jobs:
         with:
           name: build
           path: build/libs/
-      - name: Read .env
-        id: dotenv
-        uses: ./.github/actions/dotenv-action
-        with:
-          path: ./cusreforge.env
       - name: "Upload to CurseForge"
         uses: itsmeow/curseforge-upload@v3
         with:
-          file_path: "build/libs/yara-birds-${{ needs.build.outputs.version }}.jar"
+          file_path: "build/libs/${{ needs.build.outputs.archives_base_name }}-${{ needs.build.outputs.mod_version }}.jar"
           game_endpoint: "minecraft"
-          relations: "${{ steps.dotenv.outputs.relations }}"
-          game_versions: "${{ steps.dotenv.outputs.game_versions }}"
-          project_id:  "${{ steps.dotenv.outputs.project_id }}"
+          relations: "${{ needs.build.outputs.curseforge_relations }}"
+          game_versions: "${{ needs.build.outputs.curseforge_game_versions }}"
+          project_id:  "${{ needs.build.outputs.curseforge_project_id }}"
           token: "${{ secrets.CF_API_TOKEN }}"
           changelog_type: "markdown"
           changelog: ${{ github.event.release.body }}

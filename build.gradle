@@ -31,7 +31,7 @@ dependencies {
 
 	modImplementation 'software.bernie.geckolib:geckolib-fabric-1.19:3.1.15'
 
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
+	// Uncomment the following line to enable the deprecated Fabric API modules.
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
@@ -78,4 +78,12 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+
+task setUpGitHubActions() {
+	println "::set-output name=mod_version::${project.mod_version}";
+	println "::set-output name=archives_base_name::${project.archives_base_name}";
+	println "::set-output name=curseforge_relations::${project.curseforge_relations}";
+	println "::set-output name=curseforge_game_versions::${project.curseforge_game_versions}";
+	println "::set-output name=curseforge_project_id::${project.curseforge_project_id}";
 }

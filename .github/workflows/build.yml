@@ -17,15 +17,27 @@ on:
         required: true
         default: true
     outputs:
-      version:
-        value: ${{ jobs.build.outputs.version }}
+      mod_version:
+        value: ${{ jobs.build.outputs.mod_version }}
+      archives_base_name:
+        value: ${{ jobs.build.outputs.archives_base_name }}
+      curseforge_relations:
+        value: ${{ jobs.build.outputs.curseforge_relations }}
+      curseforge_game_versions:
+        value: ${{ jobs.build.outputs.curseforge_game_versions }}
+      curseforge_project_id:
+        value: ${{ jobs.build.outputs.curseforge_project_id }}
 
 jobs:
   build:
     name: ${{ (startsWith(inputs.os, 'ubuntu') && 'Ubuntu') || (startsWith(inputs.os, 'windows') && 'Windows') || inputs.os }} - JDK ${{ inputs.java }}
     runs-on: ${{ inputs.os }}
     outputs:
-      version: ${{ steps.build.outputs.version }}
+      mod_version: ${{ steps.build.outputs.mod_version }}
+      archives_base_name: ${{ steps.build.outputs.archives_base_name }}
+      curseforge_relations: ${{ steps.build.outputs.curseforge_relations }}
+      curseforge_game_versions: ${{ steps.build.outputs.curseforge_game_versions }}
+      curseforge_project_id: ${{ steps.build.outputs.curseforge_project_id }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -40,7 +52,7 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build
         id: build
-        run: ./gradlew build
+        run: ./gradlew setUpGitHubActions build
       - name: Print outputs
         run: echo ${{ toJSON(steps.build.outputs) }}
       - name: Capture build artifacts
