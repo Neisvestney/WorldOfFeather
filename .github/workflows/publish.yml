@@ -1,0 +1,44 @@
+# Automatically publish mod to curseforge and update release to add binary
+name: build
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+    with:
+      os: 'ubuntu-latest'
+      java: '17'
+      artifacts: true
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Download build"
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build/libs/
+      - name: Read .env
+        id: dotenv
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: ./cusreforge.env
+      - name: "Upload to CurseForge"
+        uses: itsmeow/curseforge-upload@v3
+        with:
+          file_path: "build/libs/yara-birds-${{ needs.build.outputs.version }}.jar"
+          game_endpoint: "minecraft"
+          relations: "${{ steps.dotenv.outputs.relations }}"
+          game_versions: "${{ steps.dotenv.outputs.game_versions }}"
+          project_id:  "${{ steps.dotenv.outputs.project_id }}"
+          token: "${{ secrets.CF_API_TOKEN }}"
+          changelog_type: "markdown"
+          changelog: ${{ github.event.release.body }}
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: "build/libs/yara-birds-${{ needs.build.outputs.version }}.jar"
