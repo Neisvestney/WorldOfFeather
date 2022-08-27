@@ -1,6 +1,6 @@
 # YaraBirds
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Neisvestney/YaraBirds/Build)](https://github.com/Neisvestney/YaraBirds/actions/workflows/build.yml)
-![GitHub Workflow Status](https://img.shields.io/badge/minecraft%20version-1.19.2-green)
+[![Tests status](https://img.shields.io/github/workflow/status/Neisvestney/YaraBirds/Test?label=tests)](https://github.com/Neisvestney/YaraBirds/actions/workflows/test.yml)
+![Minecraft 1.19.2](https://img.shields.io/badge/minecraft%20version-1.19.2-green)
 
 Minecraft birds mod
 

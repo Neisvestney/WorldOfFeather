@@ -22,7 +22,7 @@ on:
 
 jobs:
   build:
-    name: ${{ inputs.os }} - JDK ${{ inputs.java }}
+    name: ${{ (startsWith(inputs.os, "ubuntu") && "Ubuntu") || (startsWith(inputs.os, "windows") && "Windows") || inputs.os }} - JDK ${{ inputs.java }}
     runs-on: ${{ inputs.os }}
     outputs:
       version: ${{ steps.build.outputs.version }}
@@ -42,7 +42,7 @@ jobs:
         id: build
         run: ./gradlew build
       - name: Print outputs
-        run: echo ${{ steps.build.outputs }}
+        run: echo ${{ toJSON(steps.build.outputs) }}
       - name: Capture build artifacts
         if: ${{ inputs.artifacts }} # Only upload artifacts built from latest java on one OS
         uses: actions/upload-artifact@v3
