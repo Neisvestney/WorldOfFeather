@@ -22,7 +22,7 @@ on:
 
 jobs:
   build:
-    name: ${{ (startsWith(inputs.os, "ubuntu") && "Ubuntu") || (startsWith(inputs.os, "windows") && "Windows") || inputs.os }} - JDK ${{ inputs.java }}
+    name: ${{ (startsWith(inputs.os, 'ubuntu') && 'Ubuntu') || (startsWith(inputs.os, 'windows') && 'Windows') || inputs.os }} - JDK ${{ inputs.java }}
     runs-on: ${{ inputs.os }}
     outputs:
       version: ${{ steps.build.outputs.version }}
