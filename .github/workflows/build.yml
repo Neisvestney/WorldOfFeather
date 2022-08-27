@@ -53,8 +53,6 @@ jobs:
       - name: Build
         id: build
         run: ./gradlew setUpGitHubActions build
-      - name: Print outputs
-        run: echo ${{ toJSON(steps.build.outputs) }}
       - name: Capture build artifacts
         if: ${{ inputs.artifacts }} # Only upload artifacts built from latest java on one OS
         uses: actions/upload-artifact@v3
