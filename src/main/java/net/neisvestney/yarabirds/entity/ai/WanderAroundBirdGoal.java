@@ -2,17 +2,17 @@ package net.neisvestney.yarabirds.entity.ai;
 
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.WanderAroundFarGoal;
-import net.neisvestney.yarabirds.entity.RavenEntity;
+import net.neisvestney.yarabirds.entity.AbstractBirdEntity;
 
 public class WanderAroundBirdGoal extends WanderAroundFarGoal {
-    protected final RavenEntity mob;
+    protected final AbstractBirdEntity mob;
 
-    public WanderAroundBirdGoal(RavenEntity bird, double d) {
+    public WanderAroundBirdGoal(AbstractBirdEntity bird, double d) {
         super(bird, d);
         this.mob = bird;
     }
 
-    public WanderAroundBirdGoal(RavenEntity bird, double speed, float probability) {
+    public WanderAroundBirdGoal(AbstractBirdEntity bird, double speed, float probability) {
         super(bird, speed, probability);
         this.mob = bird;
     }

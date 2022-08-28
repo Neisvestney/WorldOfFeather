@@ -1,4 +1,12 @@
 {
+  "modmenu.descriptionTranslation.yarabirds": "Minecraft birds mod",
+
+  "entity.yarabirds.hooded_crow": "Hooded Crow",
+  "item.yarabirds.hooded_crow_spawn_egg": "Hooded Crow Spawn Egg",
+
+  "entity.yarabirds.magpie": "Magpie",
+  "item.yarabirds.magpie_spawn_egg": "Magpie Spawn Egg",
+
   "entity.yarabirds.raven": "Raven",
   "item.yarabirds.raven_spawn_egg": "Raven Spawn Egg"
 }

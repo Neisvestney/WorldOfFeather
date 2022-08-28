@@ -1,9 +1,10 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.neisvestney.yarabirds.mixins",
+  "package": "net.neisvestney.yarabirds.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ItemGroupMixin"
   ],
   "client": [
   ],

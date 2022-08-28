@@ -1,33 +1,33 @@
-package net.neisvestney.yarabirds.entity.ai;
+package net.neisvestney.yarabirds.entity.ai.control;
 
 import net.minecraft.entity.ai.control.MoveControl;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.neisvestney.yarabirds.entity.AbstractBirdEntity;
 
 public class FreeFlightMoveControl extends MoveControl {
-    private final MobEntity entity;
+    private final AbstractBirdEntity bird;
     private int collisionCheckCooldown;
 
-    public FreeFlightMoveControl(MobEntity entity) {
-        super(entity);
-        this.entity = entity;
+    public FreeFlightMoveControl(AbstractBirdEntity bird) {
+        super(bird);
+        this.bird = bird;
     }
 
     @Override
     public void tick() {
         if (this.state != MoveControl.State.MOVE_TO) {
-            this.entity.setNoGravity(false);
+            this.bird.setNoGravity(false);
             return;
         }
-        this.entity.setNoGravity(true);
+        this.bird.setNoGravity(true);
         if (this.collisionCheckCooldown-- <= 0) {
-            this.collisionCheckCooldown += this.entity.getRandom().nextInt(5) + 2;
-            Vec3d vec3d = new Vec3d(this.targetX - this.entity.getX(), this.targetY - this.entity.getY(), this.targetZ - this.entity.getZ());
+            this.collisionCheckCooldown += this.bird.getRandom().nextInt(5) + 2;
+            Vec3d vec3d = new Vec3d(this.targetX - this.bird.getX(), this.targetY - this.bird.getY(), this.targetZ - this.bird.getZ());
             double d = vec3d.length();
             if (this.willCollide(vec3d = vec3d.normalize(), MathHelper.ceil(d))) {
-                this.entity.setVelocity(this.entity.getVelocity().add(vec3d.multiply(0.1)));
+                this.bird.setVelocity(this.bird.getVelocity().add(vec3d.multiply(0.1)));
             } else {
                 this.state = MoveControl.State.WAIT;
             }
@@ -35,9 +35,9 @@ public class FreeFlightMoveControl extends MoveControl {
     }
 
     private boolean willCollide(Vec3d direction, int steps) {
-        Box box = this.entity.getBoundingBox();
+        Box box = this.bird.getBoundingBox();
         for (int i = 1; i < steps; ++i) {
-            if (this.entity.world.isSpaceEmpty(this.entity, box = box.offset(direction))) continue;
+            if (this.bird.world.isSpaceEmpty(this.bird, box = box.offset(direction))) continue;
             return false;
         }
         return true;

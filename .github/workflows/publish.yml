@@ -33,7 +33,9 @@ jobs:
           token: "${{ secrets.CF_API_TOKEN }}"
           release_type: "${{ github.event.release.prerelease && 'beta' || 'release' }}"
           changelog_type: "markdown"
-          changelog: "${{ github.event.release.body }}"
+          changelog: | 
+            # ${{ github.event.release.title }}  
+            {{ github.event.release.body }}
       - name: "Upload Release Asset"
         uses: actions/upload-release-asset@v1
         env:

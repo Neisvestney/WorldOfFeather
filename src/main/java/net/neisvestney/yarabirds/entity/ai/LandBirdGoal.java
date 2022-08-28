@@ -7,14 +7,14 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
-import net.neisvestney.yarabirds.entity.RavenEntity;
+import net.neisvestney.yarabirds.entity.AbstractBirdEntity;
 
 public class LandBirdGoal extends Goal {
-    private final RavenEntity bird;
+    private final AbstractBirdEntity bird;
     private final int chance;
 
 
-    public LandBirdGoal(RavenEntity bird, int chance) {
+    public LandBirdGoal(AbstractBirdEntity bird, int chance) {
         this.bird = bird;
         this.chance = chance;
     }

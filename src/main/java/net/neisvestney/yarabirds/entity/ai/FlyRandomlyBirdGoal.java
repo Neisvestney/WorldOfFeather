@@ -3,14 +3,15 @@ package net.neisvestney.yarabirds.entity.ai;
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.util.math.random.Random;
-import net.neisvestney.yarabirds.entity.RavenEntity;
+import net.neisvestney.yarabirds.entity.AbstractBirdEntity;
+import net.neisvestney.yarabirds.entity.ai.control.FreeFlightMoveControl;
 
 import java.util.EnumSet;
 
 public class FlyRandomlyBirdGoal extends Goal {
-    private final RavenEntity bird;
+    private final AbstractBirdEntity bird;
 
-    public FlyRandomlyBirdGoal(RavenEntity bird) {
+    public FlyRandomlyBirdGoal(AbstractBirdEntity bird) {
         this.bird = bird;
         this.setControls(EnumSet.of(Goal.Control.MOVE));
     }

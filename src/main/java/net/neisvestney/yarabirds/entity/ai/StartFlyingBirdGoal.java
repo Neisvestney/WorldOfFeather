@@ -4,14 +4,15 @@ import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.random.Random;
-import net.neisvestney.yarabirds.entity.RavenEntity;
+import net.neisvestney.yarabirds.entity.AbstractBirdEntity;
+import net.neisvestney.yarabirds.entity.ai.control.FreeFlightMoveControl;
 
 public class StartFlyingBirdGoal extends Goal {
-    private final RavenEntity bird;
+    private final AbstractBirdEntity bird;
     private final int chance;
 
 
-    public StartFlyingBirdGoal(RavenEntity bird, int chance) {
+    public StartFlyingBirdGoal(AbstractBirdEntity bird, int chance) {
         this.bird = bird;
         this.chance = chance;
     }

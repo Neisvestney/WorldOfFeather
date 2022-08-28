@@ -3,14 +3,14 @@ package net.neisvestney.yarabirds.entity.ai;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.neisvestney.yarabirds.entity.RavenEntity;
+import net.neisvestney.yarabirds.entity.AbstractBirdEntity;
 
 import java.util.EnumSet;
 
 public class LookForwardBirdGoal extends Goal {
-    private final RavenEntity bird;
+    private final AbstractBirdEntity bird;
 
-    public LookForwardBirdGoal(RavenEntity bird) {
+    public LookForwardBirdGoal(AbstractBirdEntity bird) {
         this.bird = bird;
         this.setControls(EnumSet.of(Goal.Control.LOOK));
     }

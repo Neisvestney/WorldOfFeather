@@ -1,4 +1,12 @@
 {
+  "modmenu.descriptionTranslation.yarabirds": "Птички",
+
+  "entity.yarabirds.hooded_crow": "Серая ворона",
+  "item.yarabirds.hooded_crow_spawn_egg": "Яйцо призыва серой вороны",
+
+  "entity.yarabirds.magpie": "Сорока",
+  "item.yarabirds.magpie_spawn_egg": "Яйцо призыва сороки",
+
   "entity.yarabirds.raven": "Ворон",
   "item.yarabirds.raven_spawn_egg": "Яйцо призыва ворона"
 }
