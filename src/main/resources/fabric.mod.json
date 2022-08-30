@@ -1,30 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "yarabirds",
+  "id": "worldoffeather",
   "version": "${version}",
-  "name": "Yara Birds",
+  "name": "The World Of Feather",
   "description": "Minecraft birds mod",
   "authors": [
     "Neisvestney",
     "Настя Климова"
   ],
   "contact": {
-    "homepage": "https://github.com/Neisvestney/YaraBirds",
-    "sources": "https://github.com/Neisvestney/YaraBirds",
-    "issues": "https://github.com/Neisvestney/YaraBirds/issues"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/worldoffeather",
+    "sources": "https://github.com/Neisvestney/WorldOfFeather",
+    "issues": "https://github.com/Neisvestney/WorldOfFeather/issues"
   },
-  "icon": "assets/yarabirds/icon.png",
+  "icon": "assets/worldoffeather/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.neisvestney.yarabirds.YaraBirds"
+      "net.neisvestney.worldoffeather.WorldOfFeather"
     ],
     "client": [
-      "net.neisvestney.yarabirds.YaraBirdsClient"
+      "net.neisvestney.worldoffeather.WorldOfFeatherClient"
     ]
   },
   "mixins": [
-    "yarabirds.mixins.json"
+    "worldoffeather.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.14.9",

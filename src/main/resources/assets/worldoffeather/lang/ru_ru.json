@@ -1,0 +1,12 @@
+{
+  "modmenu.descriptionTranslation.worldoffeather": "Птички",
+
+  "entity.worldoffeather.hooded_crow": "Серая ворона",
+  "item.worldoffeather.hooded_crow_spawn_egg": "Яйцо призыва серой вороны",
+
+  "entity.worldoffeather.magpie": "Сорока",
+  "item.worldoffeather.magpie_spawn_egg": "Яйцо призыва сороки",
+
+  "entity.worldoffeather.raven": "Ворон",
+  "item.worldoffeather.raven_spawn_egg": "Яйцо призыва ворона"
+}

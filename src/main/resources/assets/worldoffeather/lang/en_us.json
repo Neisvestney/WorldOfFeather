@@ -1,0 +1,12 @@
+{
+  "modmenu.descriptionTranslation.worldoffeather": "Minecraft birds mod",
+
+  "entity.worldoffeather.hooded_crow": "Hooded Crow",
+  "item.worldoffeather.hooded_crow_spawn_egg": "Hooded Crow Spawn Egg",
+
+  "entity.worldoffeather.magpie": "Magpie",
+  "item.worldoffeather.magpie_spawn_egg": "Magpie Spawn Egg",
+
+  "entity.worldoffeather.raven": "Raven",
+  "item.worldoffeather.raven_spawn_egg": "Raven Spawn Egg"
+}
