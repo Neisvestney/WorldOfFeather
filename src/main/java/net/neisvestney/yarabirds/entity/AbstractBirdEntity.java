@@ -73,7 +73,7 @@ public abstract class AbstractBirdEntity extends AnimalEntity implements IAnimat
         this.goalSelector.add(0, new SwimGoal(this));
         //this.goalSelector.add(1, new EscapeDangerGoal(this, 1.25));
         this.goalSelector.add(1, new StartFlyingBirdGoal(this, 120));
-        this.goalSelector.add(2, new LandBirdGoal(this, 500));
+        this.goalSelector.add(2, new LandBirdGoal(this, 240));
         this.goalSelector.add(3, new LookForwardBirdGoal(this));
         this.goalSelector.add(4, new FlyRandomlyBirdGoal(this));
         this.goalSelector.add(6, new WanderAroundBirdGoal(this, 1.0));

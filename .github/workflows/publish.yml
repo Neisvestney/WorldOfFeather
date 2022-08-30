@@ -34,8 +34,8 @@ jobs:
           release_type: "${{ github.event.release.prerelease && 'beta' || 'release' }}"
           changelog_type: "markdown"
           changelog: | 
-            # ${{ github.event.release.title }}  
-            {{ github.event.release.body }}
+            # ${{ github.event.release.name }}  
+            ${{ github.event.release.body }}
       - name: "Upload Release Asset"
         uses: actions/upload-release-asset@v1
         env:

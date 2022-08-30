@@ -12,4 +12,10 @@ public class MagpieEntity extends AbstractBirdEntity {
     protected String getAnimationsPostfix() {
         return "magpie";
     }
+
+    @Override
+    protected void mobTick() {
+        super.mobTick();
+        //YaraBirds.LOGGER.info(this.getYaw() + "");
+    }
 }
