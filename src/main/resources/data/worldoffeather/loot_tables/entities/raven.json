@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:feather",
+          "name": "worldoffeather:raven_feather",
           "functions": [
             {
               "function": "minecraft:set_count",

@@ -8,5 +8,8 @@
   "item.worldoffeather.magpie_spawn_egg": "Magpie Spawn Egg",
 
   "entity.worldoffeather.raven": "Raven",
-  "item.worldoffeather.raven_spawn_egg": "Raven Spawn Egg"
+  "item.worldoffeather.raven_spawn_egg": "Raven Spawn Egg",
+
+  "item.worldoffeather.magpie_feather": "Magpie Feather",
+  "item.worldoffeather.raven_feather": "Raven Feather"
 }

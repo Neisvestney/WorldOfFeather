@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:feather",
+    "worldoffeather:magpie_feather",
+    "worldoffeather:raven_feather"
+  ]
+}

@@ -8,5 +8,8 @@
   "item.worldoffeather.magpie_spawn_egg": "Яйцо призыва сороки",
 
   "entity.worldoffeather.raven": "Ворон",
-  "item.worldoffeather.raven_spawn_egg": "Яйцо призыва ворона"
+  "item.worldoffeather.raven_spawn_egg": "Яйцо призыва ворона",
+
+  "item.worldoffeather.magpie_feather": "Перо сороки",
+  "item.worldoffeather.raven_feather": "Перо ворона"
 }

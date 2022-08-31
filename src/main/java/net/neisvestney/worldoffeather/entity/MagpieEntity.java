@@ -1,6 +1,7 @@
 package net.neisvestney.worldoffeather.entity;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.goal.EscapeDangerGoal;
 import net.minecraft.world.World;
 
 public class MagpieEntity extends AbstractBirdEntity {
@@ -14,8 +15,8 @@ public class MagpieEntity extends AbstractBirdEntity {
     }
 
     @Override
-    protected void mobTick() {
-        super.mobTick();
-        //worldoffeather.LOGGER.info(this.getYaw() + "");
+    protected void initGoals() {
+        super.initGoals();
+        // this.goalSelector.add(1, new EscapeDangerGoal(this, 1.25));
     }
 }
